@@ -21,7 +21,7 @@ qt_standard_project_setup()
 
 qt_add_executable(module36_HW
         src/main.cpp
-        include/myWidget.cpp include/myWidget.h)
+        src/myWidget.cpp include/myWidget.h)
 
 target_link_libraries(module36_HW PRIVATE
         Qt6::Core
