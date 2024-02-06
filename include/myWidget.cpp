@@ -32,20 +32,24 @@ MyWidget::MyWidget(QWidget *parrent) {
 
 
     layout = new QVBoxLayout();
-    slider = new QSlider(Qt::Horizontal);
+    slider = new QSlider(Qt::Vertical);
     layout->addWidget(slider);
-    QLabel *label = new QLabel; //подготовим метку, куда загрузим макет изображения.
-    label->setPixmap(mCurrentCircle);
-    //label->setGeometry(label->rect());
-    layout->addWidget(label);
-    //layout->addWidget(new QLabel(reinterpret_cast<QWidget *>(&mCurrentCircle)));
     setLayout(layout);//устанавливаем этот компоновочный макет как текущий
 
     QObject::connect(slider, &QSlider::valueChanged, [this](int newValue){
-        std::cout << newValue << std::endl;
-        if(calcRange(0,33,newValue)) setYellowCircle();
-        if(calcRange(34,65,newValue)) setRedCircle();
-        if(calcRange(66,100,newValue)) setGreenCircle();
+        if (newValue%9==0)std::cout << newValue << std::endl;
+        if(calcRange(0,33,newValue)) {
+            setYellowCircle();
+            std::cout << "showYellowCircle()" << std::endl;
+        }
+        if(calcRange(34,65,newValue)) {
+            setRedCircle();
+            std::cout << "showRedCircle()" << std::endl;
+        }
+        if(calcRange(66,100,newValue)) {
+            setGreenCircle();
+            std::cout << "showGreenCircle()" << std::endl;
+        }
     });
 }
 
